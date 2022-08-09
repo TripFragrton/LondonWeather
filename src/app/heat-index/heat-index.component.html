@@ -1,22 +1,38 @@
-<h1>Temperature in °C must be over {{value3}}</h1>
+<h2> Weather condions for London</h2>
+<nav>
+  <button pButton [routerLink]="'/weather'" label="Weather"  pRipple type="button"
+          class="p-button-raised  p-button-text nav-btn" style="width: 7rem"></button>
+  <button pButton (click)="gotoChart()" label="Chart"
+          class="p-button-raised  p-button-text nav-btn" style="width: 7rem"></button>
+  <button pButton [routerLink]="'/heat-index'" label="Index"
+          class="p-button-raised  p-button-text nav-btn" style="width: 7rem"></button>
+</nav>
+<body>
+<h1 >Temperature in °C must be over {{value3}}</h1>
 <div class="form">
-  <div class="fake"></div>
+
   <div class="inputs2">
     <div class="inputs">
-        <span class="p-float-label">
-          <input #temp id="float-input1" type="text"
-               (keyup.enter)="update(temp.value,'')"
-               (blur)="update(temp.value,'')" pInputText>
-          <label for="float-input1">Temperature {{value4}}</label>
+        <span class="p-float-label" [hidden]="inputTemp">
+          <input #temp id="float-input1" type="text"  [hidden]="inputTemp"
+                 [(ngModel)]="valueInvalid"
+                 (keyup.enter)="update(temp.value,'')"
+                 (blur)="update(temp.value,'')" pInputText>
+          <label for="float-input1" [hidden]="inputTemp">Temperature {{value4}}</label>
+           <input #temp id="float-input-invalid1" type="text" [hidden]="inputTempInv"
+                  [(ngModel)]="valueInvalid" class="ng-invalid ng-dirty"
+                   pInputText>
+          <label for="float-input-invalid1"[hidden]="inputTempInv">Temperature is small</label>
        </span>
+
+
       <span class="p-float-label">
       <input #hum id="float-input3"  type="text"
-           (keyup.enter)="update('',hum.value)"
-           (blur)="update('',hum.value)" pInputText>
+             (keyup.enter)="update('',hum.value)"
+             (blur)="update('',hum.value)" pInputText>
       <label for="float-input3">Relative humidity (%)</label>
       </span>
     </div>
-
     <span class="submitBtn">
         <p-button label="Calculate" type ="submit" (click)="onSubmit()" ></p-button>
     </span>
@@ -29,3 +45,4 @@
                     optionLabel="label" optionValue="value"></p-selectButton>
   </div>
 </div>
+</body>

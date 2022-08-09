@@ -1,4 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {WeatherComponent} from "../weather/weather.component";
+import {DataIn, hour, WeatherInfoService} from "../services/weather-info.service";
+
+
 
 @Component({
   selector: 'app-chart',
@@ -8,29 +12,31 @@ import {Component, OnInit} from '@angular/core';
 export class ChartComponent implements OnInit {
   basicData: any;
   basicOptions: any;
+  @Input()dataChar = {} as hour;
 
-  constructor() { }
-
+  constructor(private web: WeatherInfoService) {
+    this.web.GetStatus().subscribe(x => {
+      this.basicData1()
+    })
+  }
   ngOnInit(): void {
 
+  }
+  basicData1(){
     this.basicData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: this.dataChar.time,
       datasets: [
         {
-          label: 'First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          label: 'Temperature',
+          data: this.dataChar.temperature_2m,
           fill: false,
           borderColor: '#42A5F5',
           tension: .4
         },
-        {
-          label: 'Second Dataset',
-          data: [28, 48, 40, 19, 86, 27, 90],
-          fill: false,
-          borderColor: '#FFA726',
-          tension: .4
-        }
       ]
     };
+
   }
+
+
 }

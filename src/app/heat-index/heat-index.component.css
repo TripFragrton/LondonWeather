@@ -1,7 +1,14 @@
+*{
+  font-size: 15px;
+}
+body{
+  max-width: 1280px;
+  margin: auto;
+}
 .form{
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 span{
   display: flex;
@@ -9,9 +16,48 @@ span{
   justify-content: center;
   margin-top: 13%;
 }
-.fake {
-  width: 10%;
-}
+
 .inputs2 {
-  margin-top: 2%;
+  margin: 4%;
+
+}
+nav {
+  margin: 2%;
+}
+.nav-btn{
+  margin-right: 0.5%;
+}
+.nav-btn:hover{
+  color:#3B82F6;
+
+}
+h1{
+  font-size: 1.5em;
+  line-height: 1;
+  left: 0.75rem;
+  color: #6c757d;
+  text-align: center;
+  margin-top: 2em;
+}
+h2{
+  font-size: 1em;
+  color: #6c757d;
+  text-align: center;
+}
+.footer{
+
+}
+
+@media (max-width: 500px) {
+
+  h1{
+    display:;
+    font-size: 1.1em;
+    line-height: 1;
+    left: 0.75rem;
+    color: #6c757d;
+    text-align: center;
+    margin-top: 2em;
+  }
+
 }

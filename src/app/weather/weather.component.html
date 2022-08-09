@@ -1,13 +1,42 @@
-<p-table [value]="data2"
+<h2> Weather condions for London</h2>
+<nav>
+  <div class="nav-btns">
+    <button pButton [routerLink]="'/weather'" label="Weather"  pRipple type="button"
+            (click)="changeToTab()"
+            class="p-button-raised  p-button-text nav-btn" style="width: 7rem"></button>
+    <button pButton [routerLink]="'/weather'" label="Chart"  pRipple type="button"
+            (click)="changeToChar()"
+            class="p-button-raised  p-button-text nav-btn" style="width: 7rem"></button>
+    <button pButton [routerLink]="'/heat-index'" label="Index"
+            class="p-button-raised  p-button-text nav-btn" style="width: 7rem"></button>
+  </div>
+  <div class="switch" [hidden]="isTabSw">
+    <p-selectButton [options]="stateOptions"  [(ngModel)]="valueTab" (click)="changeToTab()"
+                    optionLabel="label" optionValue="value"></p-selectButton>
+  </div>
+  <div class="switch" [hidden]="isCharSw">
+    <p-selectButton [options]="stateOptionsC"  [(ngModel)]="valueChar" (click)="changeToChar()"
+                    optionLabel="label" optionValue="value"></p-selectButton>
+  </div>
+</nav>
+
+
+<body>
+<p-table [value]="dataPresent " [hidden]="isShownPisTab"
          [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
   <ng-template pTemplate="header">
     <tr>
-      <th pSortableColumn="time1">Time <p-sortIcon field="time1"></p-sortIcon></th>
-      <th pSortableColumn="weathercode">Weather <p-sortIcon field="weathercode"></p-sortIcon></th>
-      <th pSortableColumn="temperature_2m">Temperature <p-sortIcon field="temperature_2m"></p-sortIcon></th>
-      <th pSortableColumn="relativehumidity_2m">Relative Humidity <p-sortIcon field="relativehumidity_2m"></p-sortIcon></th>
-      <th pSortableColumn="surface_pressure">Surface Pressure <p-sortIcon field="surface_pressure"></p-sortIcon></th>
+      <th pSortableColumn="time1">Time <p-sortIcon
+        field="time1"></p-sortIcon></th>
+      <th pSortableColumn="weathercode">Weather <p-sortIcon
+        field="weathercode"></p-sortIcon></th>
+      <th pSortableColumn="temperature_2m">Temperature <p-sortIcon
+        field="temperature_2m"></p-sortIcon></th>
+      <th pSortableColumn="relativehumidity_2m">Relative Humidity <p-sortIcon
+        field="relativehumidity_2m"></p-sortIcon></th>
+      <th pSortableColumn="surface_pressure">Surface Pressure <p-sortIcon
+        field="surface_pressure"></p-sortIcon></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-dataOut>
@@ -20,4 +49,37 @@
     </tr>
   </ng-template>
 </p-table>
+
+<app-chart [dataChar]="data" [hidden]="isShownPisCha"></app-chart>
+
+<p-table [hidden]="isShownHisTab" [value]="dataHistory"
+         [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="time1">Time <p-sortIcon
+        field="time1"></p-sortIcon></th>
+      <th pSortableColumn="weathercode">Weather <p-sortIcon
+        field="weathercode"></p-sortIcon></th>
+      <th pSortableColumn="temperature_2m">Temperature <p-sortIcon
+        field="temperature_2m"></p-sortIcon></th>
+      <th pSortableColumn="relativehumidity_2m">Relative Humidity <p-sortIcon
+        field="relativehumidity_2m"></p-sortIcon></th>
+      <th pSortableColumn="surface_pressure">Surface Pressure <p-sortIcon
+        field="surface_pressure"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-dataOutHis>
+    <tr>
+      <td>{{dataOutHis.time1}}</td>
+      <td>{{dataOutHis.weathercode}}</td>
+      <td>{{dataOutHis.temperature_2m}}</td>
+      <td>{{dataOutHis.relativehumidity_2m}}</td>
+      <td>{{dataOutHis.surface_pressure}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<app-chart [dataChar]="history" [hidden]="isShownHisCha"></app-chart>
+</body>
 

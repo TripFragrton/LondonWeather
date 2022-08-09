@@ -15,6 +15,7 @@ import {ButtonModule} from "primeng/button";
 import {TableModule} from 'primeng/table';
 import {PaginatorModule} from 'primeng/paginator';
 import {ChartModule} from "primeng/chart";
+import {ToggleButtonModule} from "primeng/togglebutton";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import {ChartModule} from "primeng/chart";
     ButtonModule,
     TableModule,
     PaginatorModule,
-    ChartModule
+    ChartModule,
+    ToggleButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
