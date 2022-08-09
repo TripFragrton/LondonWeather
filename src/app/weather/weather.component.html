@@ -1,0 +1,23 @@
+<p-table [value]="data2"
+         [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="time1">Time <p-sortIcon field="time1"></p-sortIcon></th>
+      <th pSortableColumn="weathercode">Weather <p-sortIcon field="weathercode"></p-sortIcon></th>
+      <th pSortableColumn="temperature_2m">Temperature <p-sortIcon field="temperature_2m"></p-sortIcon></th>
+      <th pSortableColumn="relativehumidity_2m">Relative Humidity <p-sortIcon field="relativehumidity_2m"></p-sortIcon></th>
+      <th pSortableColumn="surface_pressure">Surface Pressure <p-sortIcon field="surface_pressure"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-dataOut>
+    <tr>
+      <td>{{dataOut.time1}}</td>
+      <td>{{dataOut.weathercode}}</td>
+      <td>{{dataOut.temperature_2m}}</td>
+      <td>{{dataOut.relativehumidity_2m}}</td>
+      <td>{{dataOut.surface_pressure}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+

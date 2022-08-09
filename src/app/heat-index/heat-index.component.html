@@ -1,0 +1,31 @@
+<h1>Temperature in °C must be over {{value3}}</h1>
+<div class="form">
+  <div class="fake"></div>
+  <div class="inputs2">
+    <div class="inputs">
+        <span class="p-float-label">
+          <input #temp id="float-input1" type="text"
+               (keyup.enter)="update(temp.value,'')"
+               (blur)="update(temp.value,'')" pInputText>
+          <label for="float-input1">Temperature {{value4}}</label>
+       </span>
+      <span class="p-float-label">
+      <input #hum id="float-input3"  type="text"
+           (keyup.enter)="update('',hum.value)"
+           (blur)="update('',hum.value)" pInputText>
+      <label for="float-input3">Relative humidity (%)</label>
+      </span>
+    </div>
+
+    <span class="submitBtn">
+        <p-button label="Calculate" type ="submit" (click)="onSubmit()" ></p-button>
+    </span>
+    <span class="p-float-label">
+       <h2>Index : {{value2}}</h2>
+    </span>
+  </div>
+  <div class="switch">
+    <p-selectButton [options]="stateOptions"  [(ngModel)]="value1" (click)="changeToF()"
+                    optionLabel="label" optionValue="value"></p-selectButton>
+  </div>
+</div>

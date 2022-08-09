@@ -1,0 +1,17 @@
+.form{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+span{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 13%;
+}
+.fake {
+  width: 10%;
+}
+.inputs2 {
+  margin-top: 2%;
+}
