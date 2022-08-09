@@ -39,27 +39,28 @@ export class HeatIndexComponent implements OnInit {
     }
   }
   getIndex(){
-    this.index = ( - 42.379 + (2.04901523 * this.t) +
-      (10.14333127 * this.rh) - (0.22475541 * this.t * this.rh) -
-      (6.83783 * 0.001 * this.t*this.t) -
-      (5.481717 * 0.01 * this.rh*this.rh ) +
-      (1.22874 * 0.001 * this.t*this.t * this.rh) +
-      (8.5282 * 0.0001 * this.t * this.rh*this.rh ) -
-      (1.99 * 0.000001 * this.t * this.t * this.rh*this.rh ));
+    this.index = ( -42.379 + (2.04901523 * this.t) +
+      (10.14333127 * this.rh) -
+      (0.22475541 * this.t * this.rh) -
+      (0.00683783 * this.t * this.t) -
+      (0.05481717 * this.rh * this.rh ) +
+      (0.00122874 * this.t * this.t * this.rh) +
+      (0.00085282 * this.t * this.rh * this.rh ) -
+      (0.00000199 * this.t * this.t * this.rh * this.rh ));
       this.convert();
   }
   changeToF(){
     if(this.value1=="c")
     {
       if (this.t >= 26.7 ){
-        this.t = ((9/5) * this.t + 32);
+        this.t = (1.8 * this.t + 32);
         this.changed = true;
       }
       this.value3 = "26.7°C";
       this.value4 = "°C";
     } else {
       if (this.changed ==true){
-        this.t = ((5/9) * (this.t - 32));
+        this.t = (0.5556 * (this.t - 32));
         this.changed = false;
       }
       this.value3 = "80°F";
@@ -69,7 +70,7 @@ export class HeatIndexComponent implements OnInit {
   convert(){
     if(this.value1=="c" )
     {
-        this.value2 = ((5/9) * (this.index - 32));
+        this.value2 = (0.5556 * (this.index - 32));
     } else
       {
         this.value2 = this.index;
